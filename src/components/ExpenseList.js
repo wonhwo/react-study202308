@@ -5,7 +5,7 @@ import './ExpenseList.css';
 const ExpenseList = ({ items }) => {
   return (
     <>
-      <div className="">
+      <div className="expenses">
         <ExpenseItem
           title={items[0].title}
           price={items[0].price}

@@ -19,7 +19,9 @@ const App = () => {
       price:2000,
       date: new Date(2023, 5-1, 23)
     }
-  ]
+  ];
+
+  console.log('App 실행');
   return (
     <>
     <ExpenseList items={expenses}/>
