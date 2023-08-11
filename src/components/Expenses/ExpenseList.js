@@ -1,11 +1,18 @@
 import React from 'react';
 import ExpenseItem from './ExpenseItem';
 import './ExpenseList.css';
+import Card from '../UI/Card';
+import ExpenseFilter from './ExpenseFilter';
 
 const ExpenseList = ({ items }) => {
+  const onsendHandler=(selectedYear)=>{
+    console.log("왜 안대");
+    console.log(selectedYear);
+  }
   return (
     <>
-      <div className="expenses">
+      <Card className="expenses">
+        <ExpenseFilter onsendHandler={onsendHandler}/>
         <ExpenseItem
           title={items[0].title}
           price={items[0].price}
@@ -21,7 +28,7 @@ const ExpenseList = ({ items }) => {
           price={items[2].price}
           date={items[2].date}
         />
-      </div>
+      </Card>
     </>
   );
 };
