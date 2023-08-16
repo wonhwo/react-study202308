@@ -1,11 +1,11 @@
 import React from 'react'
 import './ExpenseFilter.css';
-const ExpenseFilter = ({onsendHandler}) => {
+const ExpenseFilter = ({selected,onChangeFilter}) => {
 
     const dropdownChangeHandler = e=>{
         const selectedYear = e.target.value;
         // selectedYear가 ExpenseList에서 사용 할 수 있도록 올려보내기
-        onsendHandler(selectedYear);
+        onChangeFilter(selectedYear);
         
     }
     
@@ -16,7 +16,7 @@ const ExpenseFilter = ({onsendHandler}) => {
     <div className='expenses-filter'>
       <div className='expenses-filter__control'>
         <label>Filter by year</label>
-        <select onChange={dropdownChangeHandler}>
+        <select value={selected} onChange={dropdownChangeHandler}>
           <option value='2023'>2023</option>
           <option value='2022'>2022</option>
           <option value='2021'>2021</option>

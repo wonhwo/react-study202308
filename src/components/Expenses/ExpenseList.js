@@ -26,20 +26,26 @@ const ExpenseList = ({ items }) => {
   //   ));
   // };
 
+  const filteredItems = items.filter(item => item.date.getFullYear().toString() === filteredYear)
+  let expenseContent = <p>아직 지출 내역이 없습니다.</p>;
+  
+  if (filteredItems.length > 0){
+    expenseContent=filteredItems
+    .map(({ id, title, price, date }) => (
+    <ExpenseItem
+      key={id}
+      title={title}
+      price={price}
+      date={date}
+    />
+  ));
+}
+  // 조건부 렌더링을 위한 변수
+  
   return (
     <Card className="expenses">
-      <ExpenseFilter onChangeFilter={filterChangeHandler} />
-
-      {items
-        .filter(item => item.date.getFullYear().toString() === filteredYear)
-        .map(({ id, title, price, date }) => (
-        <ExpenseItem
-          key={id}
-          title={title}
-          price={price}
-          date={date}
-        />
-      ))}
+      <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
+    {expenseContent}
     </Card>
   );
 };
