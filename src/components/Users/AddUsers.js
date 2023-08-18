@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import styles from './AddUsers.module.css';
 import Card from '../UI/Card';
 import Button from '../UI/Button/Button';
+import ErrorModal from '../UI/Modal/ErrorModal';
 
-const AddUsers = () => {
+const AddUsers = ({onAddUser}) => {
   const [userValue, setUserValue] = useState({
     username: '',
     age: '',
@@ -27,12 +28,15 @@ const AddUsers = () => {
       return;
     }
     if (+userValue.age < 1) return;
+    onAddUser(userValue);
     setUserValue({
       username: '',
       age: '',
     });
   };
   return (
+    <>
+    <ErrorModal title={"아무제목"} message={"암냠냠"}/>
     <Card className={styles.input}>
       <form onSubmit={userSubmitHandler}>
         <label htmlFor="username">이름</label>
@@ -52,6 +56,7 @@ const AddUsers = () => {
         <Button type="submit">가입하기</Button>
       </form>
     </Card>
+    </>
   );
 };
 
