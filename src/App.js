@@ -3,8 +3,11 @@ import MainHeader from './components/SideEffect/MainHeader/MainHeader';
 import Home from './components/SideEffect/Home';
 import Login from './components/SideEffect/Login/Login';
 
+import AuthContext from './store/auth-context';
+
 const App = () => {
 
+  // 로그인 상태를 관리하는 변수
   const [isLoggedIn,setIsLoggedIn] = useState(false);
 
 // 화면이 리렌더링 될 때 localStorage를 확인해서
@@ -34,14 +37,14 @@ useEffect(()=>{
   };
 
   return (
-    <>
-      <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
+    <AuthContext.Provider value={{isLoggedIn:isLoggedIn}}>
+      <MainHeader onLogout={logoutHandler} />
       <main>
         {isLoggedIn&& <Home />}
         {!isLoggedIn&& <Login onLogin={loginHandler}/>}
         
       </main>
-    </>
+    </AuthContext.Provider>
   );
 };
 

@@ -29,7 +29,7 @@ const emailReducer = (state,action)=>{
     return{
       value:state.value,
       isVaild:state.value.includes('@')
-    }
+    };
   }
 
   return{
