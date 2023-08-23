@@ -5,7 +5,7 @@ const AuthContext = React.createContext({
   onLogout: () => {},
   onLogin: (email, password) => {},
 });
-export const AuthContextProvider = ({Children}) => {
+export const AuthContextProvider = ({children}) => {
   // 로그인 상태를 관리하는 변수
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -41,7 +41,7 @@ export const AuthContextProvider = ({Children}) => {
         onLogout: logoutHandler,
         onLogin: loginHandler,
       }}>
-        {Children}
+        {children}
       </AuthContext.Provider>
   );
 };
