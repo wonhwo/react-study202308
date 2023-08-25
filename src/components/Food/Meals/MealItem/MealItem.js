@@ -3,7 +3,7 @@ import styles from './MealItem.module.scss';
 import MealItemForm from './MealItemForm';
 import CartContext from '../../../../store/cart-context';
 
-const MealItem = ({id, price, description, name}) => {
+const MealItem = ({id,description, price, name }) => {
 
   // 컨텍스트에서 장바구니 추가함수를 받아옴
   const{addItem}=useContext(CartContext);
