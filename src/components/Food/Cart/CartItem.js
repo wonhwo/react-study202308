@@ -3,10 +3,10 @@ import React, { useContext } from 'react';
 import styles from './CartItem.module.scss';
 import CartContext from '../../../store/cart-context';
 
-const CartItem = ({ cart}) => {
+const CartItem = ({ cart,hideOrder}) => {
   
-  const {addItem}=useContext(CartContext);
-  const { name, price, amount } = cart;
+  const {addItem,removeItem}=useContext(CartContext);
+  const { id,name, price, amount } = cart;
 
   const {
     'cart-item': cartItem,
@@ -18,6 +18,11 @@ const CartItem = ({ cart}) => {
   const formatPrice = new Intl.NumberFormat('ko-KR').format(price);
   const cartAddItemHandler=()=>{
     addItem({...cart,amount:1});
+  };
+  const cartRemoveItemHandler=()=>{
+
+      removeItem(id);
+    
   };
 
 
@@ -31,7 +36,7 @@ const CartItem = ({ cart}) => {
         </div>
       </div>
       <div className={actions}>
-        <button >−</button>
+        <button onClick={cartRemoveItemHandler}>−</button>
         <button onClick={cartAddItemHandler}>+</button>
       </div>
     </li>

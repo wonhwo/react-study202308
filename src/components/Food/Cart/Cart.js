@@ -18,6 +18,7 @@ const DUMMY_CART = [
       price: 12000,
     },
   ];
+
   
 const Cart = ({onHideCart}) => {
   const {'cart-tems':cartItemStyle, total, actions, 'button--alt': btnAlt, button } = styles;
@@ -34,7 +35,7 @@ const Cart = ({onHideCart}) => {
       </div>
       <div className={actions}>
         <button className={btnAlt} onClick={onHideCart}>닫기</button>
-        <button className={button}>주문</button>
+        {items.length>0&&<button className={button}>주문</button>}
       </div>
     </CartModal>
   );
